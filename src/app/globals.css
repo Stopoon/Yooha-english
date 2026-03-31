@@ -13,18 +13,37 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;
+  /* Nunito 로드 실패 시 시스템 폰트로 폴백 */
+  font-family: 'Nunito', 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 모바일 최적화 */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 button:active {
   transform: scale(0.95);
 }
 
+/* 최소 터치 타겟 크기 (모바일 접근성) */
+button, a {
+  min-height: 44px;
+}
+
 @keyframes bounceIn {
-  0% { transform: scale(0.3); opacity: 0; }
-  50% { transform: scale(1.05); }
-  70% { transform: scale(0.9); }
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.9); }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -33,8 +52,8 @@ button:active {
 }
 
 @keyframes starPop {
-  0% { transform: scale(0) rotate(-30deg); opacity: 0; }
-  60% { transform: scale(1.3) rotate(10deg); }
+  0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+  60%  { transform: scale(1.3) rotate(10deg); }
   100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
@@ -44,8 +63,8 @@ button:active {
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
+  25%       { transform: translateX(-8px); }
+  75%       { transform: translateX(8px); }
 }
 
 .shake {
