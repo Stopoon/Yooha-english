@@ -48,15 +48,11 @@ export default function Home() {
     })
   }, [])
 
-  // 미완료 세션 / 완료 세션 분류
   const incompleteSessions = sessions.filter(s => !completedIds.includes(s.id))
   const completedSessions = sessions.filter(s => completedIds.includes(s.id))
 
-  // 오늘의 세션 2개
   const todaySessions = incompleteSessions.slice(0, 2)
-  // 내일 예습 2개
   const previewSessions = incompleteSessions.slice(2, 4)
-  // 최근 복습 2개 (스페이스드 리피티션)
   const reviewSessions = completedSessions.slice(-2).reverse()
 
   const todayAllDone = todaySessions.length === 0
@@ -133,7 +129,6 @@ export default function Home() {
         </div>
       ) : (
         <div className="flex flex-col gap-4">
-          {/* 오늘 섹션 헤더 */}
           <h2 className="text-lg font-bold text-gray-700">
             {todayAllDone ? '✅ 오늘 학습 완료!' : '🎯 오늘의 세션 (2개)'}
           </h2>
@@ -176,7 +171,6 @@ export default function Home() {
             </Link>
           ))}
 
-          {/* 레벨 진도 */}
           {todaySessions.length > 0 && (
             <div className="bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex justify-between items-center mb-2">
@@ -197,7 +191,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* 내일 예습 */}
           {previewSessions.length > 0 && (
             <div className="bg-blue-50 rounded-2xl p-4 border border-blue-100">
               <p className="text-sm font-bold text-blue-600 mb-2">📅 내일 예습 미리보기</p>
@@ -218,7 +211,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* 복습 (스페이스드 리피티션) */}
           {reviewSessions.length > 0 && (
             <div className="bg-green-50 rounded-2xl p-4 border border-green-100">
               <p className="text-sm font-bold text-green-600 mb-2">🔄 복습하기 (스페이스드 리피티션)</p>
